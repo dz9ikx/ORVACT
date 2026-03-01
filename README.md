@@ -10,7 +10,7 @@ ORVACT is an open-source platform for gyroscopic propulsion research. The system
 
 ## Key Features
 - Counter-rotating fluid rotors (mercury/conductive fluid)
-- Tesla valve passive flow control channels
+- Tesla valve passive flow control (3D printed inserts)
 - Axial electromagnetic stator with vector field control
 - Static central shaft with integrated cooling
 - Modular containment design
