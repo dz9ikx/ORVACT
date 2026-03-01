@@ -1,21 +1,28 @@
-MIT License
+# ORVACT Project - License
 
-Copyright (c) 2026 dz9ikx
+## 1. Documentation & Specifications
+Licensed under **CC-BY-SA 4.0**
+https://creativecommons.org/licenses/by-sa/4.0/
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## 2. Hardware Designs (when available)
+Licensed under **CERN-OHL-S-2.0**
+https://ohl.cern.ch/
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+## 3. Software/Firmware (when available)
+Licensed under **MIT License** (или GPL-3.0)
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+## 4. Additional Terms
+**ORVACT Open Humanity License v1.0**
+- No patenting allowed
+- All improvements must be open
+- Share-alike principle
+
+---
+
+© 2026 @dz9ikx • ORVACT Project
+Licensed under CC-BY-SA 4.0
+
+Author: dz9ikx
+Contact: dz9ikx@email.com
+
+"From Garage to Stars"
