@@ -1,28 +1,137 @@
-# ORVACT Project - License
+# ORVACT Open Humanity License v1.0
 
-## 1. Documentation & Specifications
-Licensed under **CC-BY-SA 4.0**
+## 1. Documentation and Specifications
+Licensed under **Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA 4.0)**.  
 https://creativecommons.org/licenses/by-sa/4.0/
 
-## 2. Hardware Designs (when available)
-Licensed under **CERN-OHL-S-2.0**
-https://ohl.cern.ch/
-
-## 3. Software/Firmware (when available)
-Licensed under **MIT License** (или GPL-3.0)
-
-## 4. Additional Terms
-**ORVACT Open Humanity License v1.0**
-- No patenting allowed
-- All improvements must be open
-- Share-alike principle
+You are free to share and adapt the material for any purpose, provided you:
+- Give appropriate credit
+- Distribute modifications under the same license
 
 ---
 
-© 2026 @dz9ikx • ORVACT Project
-Licensed under CC-BY-SA 4.0
+## 2. Hardware Designs
+Licensed under **CERN Open Hardware License Version 2 – Strongly Reciprocal (CERN-OHL-S-2.0)**.  
+https://ohl.cern.ch/
 
-Author: dz9ikx
-Contact: dz9ikx@email.com
+---
 
-"From Garage to Stars"
+## 3. Software and Firmware
+Licensed under **GNU General Public License v3.0 (GPL-3.0)**.  
+https://www.gnu.org/licenses/gpl-3.0.html
+
+*Alternative: MIT License may be used for specific components at the author's discretion.*
+
+---
+
+## 4. Additional Terms: ORVACT Open Humanity License v1.0
+
+By using, copying, modifying, or distributing any part of this project, you explicitly agree to the following terms:
+
+### 4.1. Non-Assertion (Core Architecture)
+
+You agree **not to file, maintain, or enforce** any patent claims covering:
+
+#### a) Rotor-Fluid System
+Any propulsion or stabilization system comprising one or more rotating bodies containing conductive fluid (including mercury, gallium alloys, liquid metals, electrolytes, or any substitute) arranged in closed channels, where said rotating bodies provide gyroscopic stability, momentum storage, or thrust generation.
+
+#### b) Passive Flow Control
+Any channel design incorporating asymmetric geometric features (Tesla valves, fluid diodes, bifurcations, or similar passive rectifiers) within a rotating fluid circuit, intended to dampen secondary flows, suppress turbulence, or control fluid behavior during precession or maneuvering.
+
+#### c) Electromagnetic Stator Arrangement
+Any stationary electromagnetic assembly positioned coaxially or radially relative to said rotating bodies, capable of generating a magnetic field that interacts with currents induced in the conductive fluid, regardless of the number of stators, their placement, or the use of superconducting materials.
+
+#### d) Precession-Based Vector Control
+Any method of generating thrust or controlling vehicle attitude by applying controlled magnetic fields to rotating conductive masses to induce gyroscopic precession, whether in atmosphere, vacuum, underwater, or any other environment.
+
+#### e) System Integration
+Any vehicle, apparatus, or method that combines elements (a) through (d) in any configuration, including but not limited to the specific implementations described in the ORVACT Technical Specification (Tier 0 through Tier N), where N represents any future iteration of the architecture.
+
+#### f) Future Evolutions
+Any derivative, improvement, or evolution of the elements described above that retains the fundamental principles of:
+- Using rotating conductive fluid for momentum storage
+- Passive geometric flow control within rotating channels
+- Electromagnetic field interaction for force generation
+- Precession as a primary control or thrust mechanism
+
+#### g) Scope
+This non-assertion applies regardless of:
+- Scale (from grams to kilotons)
+- Operating environment (atmosphere, vacuum, underwater, planetary surfaces)
+- Specific materials used (any conductive fluid, any channel material)
+- Number of rotors or stators (single, dual, or multiple)
+- Presence or absence of additional propulsion systems (chemical, electric, nuclear)
+- Commercial or non-commercial use
+
+---
+
+### 4.2. Defensive Patent Grant
+
+If you or your organization holds or acquires any patent that covers:
+- Any element described in Section 4.1
+- Any improvement or derivative of the ORVACT architecture
+- Any method or apparatus that would infringe the ORVACT core design if built
+
+You hereby grant **a perpetual, worldwide, royalty-free, non-revocable license** to all users of this project to practice said patent for any purpose, including commercial applications.
+
+This grant is **binding on any future acquirer** of your patents and survives any transfer of ownership.
+
+---
+
+### 4.3. Open Improvements
+
+All modifications, derivatives, or improvements to:
+- Hardware designs described in this project
+- Software/firmware derived from ORVACT code
+- Documentation based on ORVACT specifications
+
+**must be distributed under compatible open licenses**:
+- Hardware: CERN-OHL-S-2.0 or later
+- Software: GPL-3.0 or later
+- Documentation: CC-BY-SA 4.0 or later
+
+---
+
+### 4.4. Acceptance
+
+By using, copying, modifying, or distributing any part of this project, you **explicitly acknowledge and agree** to all terms above. If you cannot comply with these terms, you are not authorized to use the project.
+
+---
+
+## 5. Disclaimer of Warranty
+
+THE PROJECT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+## 6. Limitation of Liability
+
+IN NO EVENT SHALL THE AUTHORS, CONTRIBUTORS, OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE PROJECT OR THE USE OR OTHER DEALINGS IN THE PROJECT.
+
+## 7. Definitions
+
+- **"Core Architecture"** means the fundamental principles and elements described in Section 4.1, regardless of specific implementation details.
+- **"Derivative"** means any work that is based on or incorporates any part of this project.
+- **"User"** means any individual or entity that accesses, uses, modifies, or distributes the project.
+
+---
+
+## 8. Governing Law
+
+This license shall be governed by the laws of [Jurisdiction of Your Choice], without regard to its conflict of law provisions. However, any patent claims shall be governed by the relevant national patent laws.
+
+---
+
+## 9. Final Provisions
+
+If any provision of this license is held invalid or unenforceable, the remaining provisions shall remain in full force and effect. This license constitutes the entire agreement between the parties regarding the project.
+
+---
+
+© 2026 ORVACT Collective  
+**Author:** dz9ikx  
+**Contact:** dz9ikx@mail.com  
+
+**"From Garage to Stars"**
+
+---
+
+*This license is designed to keep ORVACT open forever. No patents. No restrictions. Just open engineering for humanity.*
