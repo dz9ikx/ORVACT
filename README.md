@@ -75,7 +75,7 @@ This is an **open-source research platform** — from garage-scale prototypes to
 | File | Description |
 |------|-------------|
 | `SPECIFICATION.md` | Complete technical spec (Tiers 0–3) |
-| `BUILD_GUIDE_TIER0.md` | Step-by-step garage build |
+| `ORVACT_Tier0_BUILD_GUIDE.md` | Step-by-step garage build |
 | `ORVACT_Tier1_Spec_v1.md` | Atmospheric vehicle concept |
 | `ORVACT_Tier2_Spec_v1.md` | Lunar mission concept |
 | `ORVACT_Tier3_Investor_Prospectus.md` | Interstellar probe (investor focus) |
