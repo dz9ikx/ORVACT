@@ -89,7 +89,7 @@ This is an **open-source research platform** — from garage-scale prototypes to
 
 ### Build the Tier 0 Prototype
 
-1. Read the [BUILD_GUIDE_TIER0](./BUILD_GUIDE_TIER0.md)
+1. Read the [ORVACT_Tier0_BUILD_GUIDE](./ORVACT_Tier0_BUILD_GUIDE.md)
 2. Follow safety protocols for high-speed rotation and conductive fluids
 3. Run the test sequence and share your data
 
