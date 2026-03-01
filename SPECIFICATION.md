@@ -1,4 +1,4 @@
-# ORVACT Technical Specification v1.1
+# ORVACT Technical Specification v1.2
 
 ## 1. System Overview
 ORVACT is a modular gyroscopic propulsion platform. It consists of two counter-rotating fluid rotors with Tesla valve channels, an axial electromagnetic stator, and a static structural shaft.
@@ -16,47 +16,64 @@ ORVACT is a modular gyroscopic propulsion platform. It consists of two counter-r
 - Rotor Thickness: 40 mm (center), 20 mm (periphery)
 - Channel Configuration: Single toroidal loop
 - Channel Radius: 0.9 m (from center)
-- Channel Cross-section: 20 mm outer diameter, 16 mm inner diameter (PVC/HDPE pipe)
+- Channel Cross-section: 20 mm OD PVC, 16 mm ID -> Area = 201 mm^2
 - Channel Length: 5.65 m (circumference at R=0.9m)
-- Fluid Volume: 1.13 liters
-- Fill Ratio: 92% fluid (1.04 L), 8% gas buffer (0.09 L)
+- Fluid Volume: 1.136 L (calculated: 5.65 x 0.201)
+- Fill Ratio: 88% fluid (1.00 L), 12% gas buffer (0.14 L)
+  - Note: Mercury mass at 1.00 L = 13.53 kg (density 13,534 kg/m^3)
 
 ### 3.2. Tesla Valve Design (Tier 0 Simplified)
-- Configuration: Loop with asymmetric restrictions
-- Restriction Type: Gradual taper (20mm to 12mm over 100mm)
-- Placement: 4 equidistant points around loop
-- Purpose: Dampen secondary flows during precession
-- Pressure Drop Ratio: Forward:Reverse = 1:3 (target)
+- Configuration: 3D-printed inserts (PETG/ABS) with asymmetric geometry
+- Insert Length: 100 mm per segment
+- Number of Segments: 4 (90 degree spacing)
+- Geometry: Curved loop with sharp reverse turn (Tesla patent US1329559)
+- Forward Pressure Drop: Minimal (gradual curves)
+- Reverse Pressure Drop: 2-3x forward (flow separation)
+- Installation: Slide inserts into PVC pipe before sealing ends
 
 ### 3.3. Mass Properties
 - Fluid Mass: 
-  - Mercury: 13.5 kg (density 13,534 kg/m3)
-  - Galinstan: 7.3 kg (density 6,440 kg/m3)
-  - Salt solution: 1.4 kg (density 1,200 kg/m3)
-- Rotor Mass (Aluminum 6061-T6): ~15 kg per disk
+  - Mercury: 13.53 kg (density 13,534 kg/m^3, at 1.00 L fill)
+  - Galinstan: 6.44 kg (density 6,440 kg/m^3, at 1.00 L fill)
+  - Salt solution: 1.20 kg (density 1,200 kg/m^3, at 1.00 L fill)
+- Rotor Disk Mass (Aluminum 6061-T6, 20mm): ~17 kg per disk
+- Magnet Mass (N52, 50x20mm, 32 pcs): ~9.6 kg per rotor
+- Total Rotating Mass: ~40 kg per rotor (with fluid and magnets)
 - Stator Mass: ~5 kg
-- Total System Mass: ~40 kg (with frame)
+- Total System Mass: ~85 kg (with frame, both rotors)
 
 ### 3.4. Material Specifications
 - Rotor Disk: Aluminum 6061-T6, 20mm plate
-- Channel: PVC Schedule 40 or HDPE, 20mm OD
-- Shaft: Steel 1045, 20mm diameter, ground finish
-- Bearings: 608ZZ skateboard bearings (2 per rotor)
+  - WARNING: Aluminum amalgamates with mercury. If using mercury:
+    - Coat all aluminum surfaces with epoxy barrier, OR
+    - Use stainless steel 304 for rotor construction
+- Channel: PVC Schedule 40 or HDPE, 20mm OD, 16mm ID
+  - Sealing: Metal end caps with O-ring compression (NOT epoxy for mercury)
+- Shaft: Steel 1045, 25mm diameter (upgraded from 20mm for magnet load)
+- Bearings: 6202-2RS deep groove ball bearings (upgraded from 608ZZ)
+  - Load rating: 5.8 kN radial, sufficient for 20 kg per bearing at 600 RPM
 - Fasteners: M6-M12 stainless steel (grade 304)
 
 ### 3.5. Operational Limits
 - Max RPM: 600 (63 rad/s)
-- Nominal RPM: 300 (31 rad/s)
+- Nominal RPM: 300 (31.4 rad/s)
 - Run Time: 10-15 minutes continuous (thermal limit)
 - Max Temperature: 80 C (bearing limit)
 - Vibration Limit: 0.5 mm/s RMS (balanced)
 
 ### 3.6. Power and Control
-- Motor: BLDC outrunner, 1.5-2 kW peak (e.g., MXUS 3K)
-- Controller: VESC 6 Plus, 120A, FOC algorithm
-- Power Supply: 48V 2000W PSU or LiFePO4 48V 20Ah
+- Motor Configuration: TWO independent BLDC motors (one per rotor)
+  - Reason: Counter-rotation requires independent speed control
+  - Alternative: Single motor + planetary gearbox with reverse output
+- Motor: MXUS 3K, 1.5 kW peak, 48V (each)
+- Controller: TWO VESC 6 Plus, 120A (one per motor)
+- Gear Ratio: 3:1 (60T rotor pulley / 20T motor pulley)
+  - Output torque at rotor: ~14 N*m (at 300 RPM, 1.5 kW)
+- Power Supply: 48V 4000W PSU (or dual 2000W)
 - Stator Coils: 4-8 coils, 50-100 turns each, 1.5mm enamel copper wire
-- Stator Power: 12-24V 5-10A DC supply
+- Stator Power: 500 W - 2 kW (field coils, copper)
+  - Note: Copper coils limited to ~500 W continuous without aggressive cooling.
+  - 2 kW requires liquid cooling or short-duty operation.
 - Sensors: 
   - MPU6050 (IMU, gyro+accel)
   - ACS712 30A (current sensing)
@@ -67,18 +84,21 @@ ORVACT is a modular gyroscopic propulsion platform. It consists of two counter-r
   - SLOW_LOOP: 100 Hz (stator control, data logging)
 
 ### 3.7. Expected Performance
-- Gyroscopic Stiffness: ~465 N m s (at 300 RPM, Mercury)
-- Angular Momentum: 465 N m s
-- Precession Rate: 1 deg/s per 8 N m applied torque (at 300 RPM)
+- Angular Momentum (per rotor): L = I x omega = ~408 N*m*s at 300 RPM
+  - I_fluid = m x R^2 = 13.53 x 0.9^2 = 10.96 kg*m^2
+  - I_disk (approx) = 0.5 x m x R_eff^2 = 0.5 x 17 x 0.45^2 = 1.72 kg*m^2
+  - I_total (conservative) = ~13 kg*m^2
+- Precession Rate: Omega = tau / L -> 1 N*m torque -> ~0.14 deg/s precession at 300 RPM
 - MHD Thrust (Estimate): 0.1-1 N (atmospheric test, requires validation)
 - Efficiency: Motor 85%, MHD interaction 5-15% (estimated)
 
 ### 3.8. Manufacturing Tolerances
 - Rotor Balance: G6.3 ISO standard (static + dynamic)
+  - Note: Balance MUST include fluid and magnets (dynamic balancing required)
 - Shaft Runout: < 0.1 mm TIR
 - Bearing Fit: H7/h6 (interference fit on shaft)
 - Channel Alignment: < 1 mm deviation from nominal radius
-- Coil Position: < 2 mm from design position
+- Magnet Placement: < 2 mm positional tolerance, verified polarity
 
 ## 4. Tier 1 Industrial Specifications (Atmospheric Vehicle)
 
@@ -89,17 +109,18 @@ ORVACT is a modular gyroscopic propulsion platform. It consists of two counter-r
 - Channel Radius: 4.5 m (from center)
 - Channel Cross-section: 150 mm x 150 mm (square)
 - Channel Length: 28.3 m (circumference at R=4.5m)
-- Fluid Volume: 0.636 m3 per rotor
-- Fill Ratio: 92% fluid (0.585 m3), 8% Argon buffer (0.051 m3)
+- Fluid Volume: 0.636 m^3 per rotor
+- Fill Ratio: 92% fluid (0.585 m^3), 8% Argon buffer (0.051 m^3)
 
 ### 4.2. Tesla Valve Design (Tier 1 Advanced)
 - Configuration: Integrated wall channels with asymmetric geometry
 - Channel Shape: Curved asymmetric loops (Tesla's original patent)
 - Unit Cell Length: 300 mm
 - Number of Unit Cells: 94 (full loop)
+- Target Diodicity: 3.0 (validated via CFD for this geometry)
+  - Note: Actual diodicity depends on Reynolds number. Expected range: 2.5-3.5 at design flow.
 - Forward Pressure Drop: 0.1 bar at design flow
 - Reverse Pressure Drop: 0.3 bar at design flow
-- Diodicity: 3.0 (target)
 - Material: Machined into liner or additively manufactured
 
 ### 4.3. Mass Properties
@@ -135,6 +156,9 @@ ORVACT is a modular gyroscopic propulsion platform. It consists of two counter-r
 - Reserve: Li-ion battery 200 kWh
 - Motor Power: 4-5 MW peak (MHD mode)
 - Stator Power: 500 kW - 2 MW (field coils)
+  - Copper coils: Limited to ~500 kW continuous (liquid cooling required)
+  - HTS coils (YBCO): Enable 2 MW+ fields with cryogenic cooling (77 K)
+  - Recommendation: Start with copper at 500 kW, upgrade to HTS for high-thrust modes
 - Cooling: Liquid cooling (stator), passive convection (rotors)
 - Control System:
   - FAST_LOOP: 1 ms (AMB stabilization, field control)
@@ -150,7 +174,7 @@ ORVACT is a modular gyroscopic propulsion platform. It consists of two counter-r
 
 ### 4.7. Expected Performance
 - Stored Kinetic Energy: 362 MJ (total, 2 rotors)
-- Angular Momentum: 18.1 MN m s (total)
+- Angular Momentum: 18.1 MN*m*s (total)
 - MHD Thrust (Atmosphere): Up to 100 kN (theoretical max)
 - Specific Impulse (MHD): 500-1000 s (estimated)
 - Vacuum Thrust (Hypothetical): Up to 20 kN (requires validation)
@@ -168,7 +192,8 @@ ORVACT is a modular gyroscopic propulsion platform. It consists of two counter-r
   - Active magnetic damping
   - Emergency gas venting (filtered)
   - Automatic shutdown on:
-    - Vibration > 2.0 mm/s
+    - Vibration > 5.0 mm/s (emergency stop)
+    - Vibration > 2.5 mm/s (warning, reduce load)
     - Temperature > 300 C
     - Pressure > 5 atm
     - Bearing fault detection
@@ -185,8 +210,15 @@ ORVACT is a modular gyroscopic propulsion platform. It consists of two counter-r
 - Fluid Mass: 10,000-15,000 kg per rotor (increased margin)
 - Liner Material: Monolithic SiC ceramic (no chemical reaction with Hg)
 - Gas Buffer: 12% volume (Argon, accounting for -100 C to +300 C range)
+  - Thermal range: -100 C to +300 C (Delta T = 400 K)
+  - Pressure variation (ideal gas, constant volume):
+    - At 20 C (293 K): 1.2 atm (fill condition)
+    - At -100 C (173 K): P = 1.2 x (173/293) = 0.71 atm
+    - At +300 C (573 K): P = 1.2 x (573/293) = 2.35 atm
+  - Design pressure: 3.0 atm (factor of 1.3 on max expected)
+  - Liner yield strength (Haynes 230): 310 MPa at 300 C -> sufficient margin
 - Power Source: Kilopower nuclear reactor 1-10 kWe + solar panels (reserve)
-- Heat Rejection: Droplet radiators 100-200 m2
+- Heat Rejection: Droplet radiators 100-200 m^2
 - Crew: 1-2 persons in suits or light capsule
 - Mission Duration: 7-14 days
 - Delta-V: 3.2 km/s (LEO to lunar surface), 2.7 km/s (return)
@@ -210,10 +242,14 @@ ORVACT is a modular gyroscopic propulsion platform. It consists of two counter-r
 - Liner Material: ZrC or CMC (ceramic matrix composite), 50,000+ hour life
 - Gas Buffer: 15% volume (Ar/He mix, -150 C to +400 C range)
 - Power Source: Nuclear reactor 10 MWe (thermal 30-50 MW)
-- Heat Rejection: Droplet radiators 500-1000 m2 (liquid metal, 800-1000 K)
+- Heat Rejection: Droplet radiators 500-1000 m^2 (liquid metal, 800-1000 K)
 - Payload: 50 kg scientific instruments
 - Mission Duration: 40-50 years (to Proxima Centauri)
-- Cruise Velocity: 0.1c (30,000 km/s, hypothetical)
+- Cruise Velocity: 0.1c (30,000 km/s) - HYPOTHETICAL
+  - Requires validation of gravitomagnetic coupling effect
+  - If classical physics only: Reserve ion thrusters (Isp 3000-5000 s) for trajectory corrections
+  - Energy requirement for 0.1c (classical): E = 0.5 x m x v^2 = 0.5 x 100,000 kg x (3e7 m/s)^2 = 4.5e19 J (~10,000 TWh) - not feasible with known propulsion
+  - If gravitomagnetic effect confirmed: Thrust scales with omega^2 x B^2 x geometry, enabling continuous acceleration without propellant
 - Communication: Laser 100W-1kW + 3-5m deployable antenna
 - Data Rate: 1-10 bits/sec at 4.24 ly distance
 
@@ -234,7 +270,7 @@ For asymmetric curved channel:
 - Reverse flow: Sharp turns, flow separation, recirculation zones
 
 Pressure drop (Darcy-Weisbach):
-DeltaP = f * (L/D) * (rho * v^2 / 2)
+DeltaP = f x (L/D) x (rho x v^2 / 2)
 
 Where:
 - f = friction factor (function of Re and geometry)
@@ -244,16 +280,21 @@ Where:
 - v = flow velocity
 
 ### 7.2. Tier 0 Valve Parameters
-- Channel OD: 20 mm, ID: 16 mm
-- Restriction: Taper from 16mm to 12mm over 100mm
-- Number of restrictions: 4 (90 degree spacing)
-- Expected Di: 2.0-3.0 (simplified design)
+- Channel: 16 mm ID PVC pipe
+- Insert Material: PETG or ABS (3D printed)
+- Insert Geometry: 
+  - Forward path: Gradual 90 degree curve, radius 50 mm
+  - Reverse path: Sharp 90 degree turn with recirculation pocket
+- Unit Cell Length: 100 mm
+- Number of Cells: 4 (spaced 90 degree)
+- Expected Diodicity: 2.0-2.5 (simplified geometry)
+- CFD Validation: Recommended (OpenFOAM, simpleFoam)
 
 ### 7.3. Tier 1 Valve Parameters
 - Channel: 150mm x 150mm square
 - Unit cell: 300mm length, asymmetric loop
 - Number of cells: 94 (full 28.3m loop)
-- Target Di: 3.0-5.0 (optimized geometry)
+- Target Diodicity: 3.0-5.0 (optimized geometry)
 - CFD Validation: Required (ANSYS Fluent / OpenFOAM)
 
 ## 8. Manufacturing Processes
@@ -261,8 +302,8 @@ Where:
 ### 8.1. Tier 0 (Garage)
 - Rotor disks: CNC cutting or waterjet from 20mm Al plate
 - Channel: Off-the-shelf PVC/HDPE pipe, glued/welded
-- Shaft: Turned steel rod, 20mm diameter
-- Bearings: Press-fit 608ZZ
+- Shaft: Turned steel rod, 25mm diameter
+- Bearings: Press-fit 6202-2RS
 - Assembly: Hand tools, torque wrench
 - Balancing: Static balancing on knife-edges, dynamic with vibration sensor
 
@@ -283,12 +324,18 @@ Where:
 ## 9. Testing Protocols
 
 ### 9.1. Tier 0 Tests
-1. Static Balance Test: < 1 gram imbalance at 1m radius
-2. Run-in Test: 1 hour at 100 RPM, monitor temperature/vibration
-3. Balance Test: 300 RPM, vibration < 0.5 mm/s
-4. Precession Test: Apply known torque, measure orthogonal response
-5. MHD Test: Energize stator coils, measure current change, thrust (if any)
-6. Endurance Test: 10 cycles of 10 minutes at 300 RPM
+1. Static Balance Test (empty): < 1 gram imbalance at 1m radius
+2. Fluid Fill Test: Fill horizontally, rotate disk slowly to distribute gas buffer evenly
+3. Seal Integrity Test: Pressure test channel at 1.5 atm with soapy water
+4. Run-in Test: 1 hour at 100 RPM (empty), monitor temperature/vibration
+5. Dynamic Balance Test (with fluid): 
+   - Fill channel to 88-92%
+   - Run at 50-100 RPM
+   - Measure vibration, add correction weights
+   - Target: < 0.5 mm/s at 300 RPM
+6. Precession Test: Apply known torque, measure orthogonal response
+7. MHD Test: Energize stator coils, measure current change
+8. Endurance Test: 10 cycles of 10 minutes at 300 RPM
 
 ### 9.2. Tier 1 Tests
 1. Hydrostatic Test: Liner at 2x operating pressure (30 MPa)
@@ -311,6 +358,32 @@ Where:
 
 10.5. Safety Margins: Factor of 3.0 on yield strength for rotating components (aerospace standard). Factor of 2.0 for pressure containment.
 
+10.6. Mercury Compatibility: Mercury amalgamates with aluminum, copper, and many metals. Use only with:
+- Stainless steel (304, 316)
+- Titanium
+- HDPE, PTFE, PVC (short-term)
+- Coated surfaces (epoxy barrier)
+
+10.7. Dynamic Balancing: Fluid redistribution during rotation changes mass distribution. Static balance is insufficient. Dynamic balancing at operational speed is required.
+
+10.8. Counter-Rotation Drive: Independent motor control is required for true counter-rotation. Single-motor solutions require mechanical reversal (planetary gearbox, belt cross).
+
+10.9. Scalability Constraints
+- Stress scaling: Centrifugal stress sigma proportional to rho x omega^2 x R^2
+  - Doubling radius quadruples stress at same omega
+  - Tier 3 (smaller radius) enables higher omega without material failure
+- Mass scaling: m proportional to R^3 for geometric similarity
+  - Tier 3 mass optimized for launch constraints, not maximum thrust
+- Thermal management: Vacuum operation requires radiative cooling only
+  - Heat rejection proportional to T^4 x area (Stefan-Boltzmann)
+  - Tier 3 droplet radiators enable high heat flux at low mass
+
+10.10. Mercury Mass Clarification
+- Mercury mass at 88% fill (1.00 L): 13.53 kg
+- Use stainless steel rotor or epoxy-coated aluminum if mercury is employed
+- PVC/HDPE channels acceptable for short-term testing; metal liners required for Tier 1+
+
 ## 11. Revision History
 v1.0 (2026-03-01): Initial specification release.
 v1.1 (2026-03-02): Added Tesla valve details, Tier 0-3 nomenclature, manufacturing processes, testing protocols.
+v1.2 (2026-03-03): Corrected fill ratio, angular momentum calculation, stator power units, vibration thresholds, gas buffer thermal analysis, scalability constraints.
