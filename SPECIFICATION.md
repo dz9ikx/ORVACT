@@ -1,4 +1,4 @@
-# ORVACT Technical Specification v1.5
+# ORVACT Technical Specification v1.7
 
 ## 1. System Overview
 ORVACT is a modular gyroscopic propulsion platform. It consists of two counter-rotating fluid rotors with Tesla valve channels, an axial electromagnetic stator, and a static structural shaft.
@@ -504,12 +504,12 @@ Rationale:
 
 ## 11. Revision History
 v1.0 (2026-03-01): Initial specification release.
-v1.1 (2026-03-02): Added Tesla valve details, Tier 0-3 nomenclature, manufacturing processes, testing protocols.
-v1.2 (2026-03-03): Corrected fill ratio, angular momentum calculation, stator power units, vibration thresholds, gas buffer thermal analysis, scalability constraints.
-v1.3 (2026-03-04): Added discrete control protocol, eddy current mitigation, bearing selection notes, mercury compatibility warnings.
-v1.4 (2026-03-05): Added minimal viable perturbation protocol, sweep testing methodology, phase control options.
-v1.5 (2026-03-06): Integrated fluid dynamics timing constraints, architectural principle #1, clarified thrust mechanisms, updated Tesla valve material guidance.
-
+v1.1 (2026-03-01): Added Tesla valve details, Tier 0-3 nomenclature, manufacturing processes, testing protocols.
+v1.2 (2026-03-01): Corrected fill ratio, angular momentum calculation, stator power units, vibration thresholds, gas buffer thermal analysis, scalability constraints.
+v1.3 (2026-03-01): Added discrete control protocol, eddy current mitigation, bearing selection notes, mercury compatibility warnings.
+v1.4 (2026-03-01): Added minimal viable perturbation protocol, sweep testing methodology, phase control options.
+v1.5 (2026-03-01): Integrated fluid dynamics timing constraints, architectural principle #1, clarified thrust mechanisms, updated Tesla valve material guidance.
+v1.7 (2026-03-02): 10.12
 ---
 
 **Author**: ORVACT Collective (dz9ikx)  
