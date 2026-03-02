@@ -454,10 +454,33 @@ Where:
 - Mitigation: radial slots in aluminum disks OR use non-conductive structural material (FR4)
 - Pulsed field operation reduces average eddy losses
 
-10.12. **Thrust Mechanism Clarification**
-- Atmospheric thrust: Classical MHD (Lorentz force on conductive fluid + interaction with air/ions). Testable in Tier 0.
-- Vacuum thrust: Hypothetical gravitomagnetic coupling. Requires Tier 2 validation.
-- Internal mass redistribution (CoM shift): Cannot produce net external thrust in closed system (conservation of momentum). Not claimed as thrust mechanism.
+10.12. **Thrust Mechanism Clarification** (Updated v1.7)
+System Architecture:
+Rotors (fluid-filled disks): Counter-rotating at 300-600 RPM inside stationary chassis
+Chassis: Does NOT rotate; houses stator coils, bearings, structure
+Shaft: Stationary structural spine
+Fluid: Contained within sealed rotor channels; no mass ejection
+Atmospheric Mode:
+MHD force acts on contained conductive fluid (Hg/Galinstan) via Lorentz force (F = ∫(J × B) dV).
+Force transfers: Fluid → channel walls → rotor disk → bearings → stationary chassis.
+Precession: Applied torque on rotor axis creates orthogonal reaction force on bearings.
+External momentum exchange:
+On test stand: Force measured at mounting points (internal force transfer, not propulsion)
+In flight: Chassis interacts with air via aerodynamic surfaces during precession maneuvers
+No ionization, no plasma, no mass ejection required
+Important Distinction:
+Tier 0 tests measure force transfer through structure (bearing loads, chassis reaction)
+This is NOT net propulsion in a closed system
+Atmospheric propulsion requires external momentum exchange (aerodynamic interaction with air)
+If no external interaction exists, measured force is internal load only
+Vacuum Mode:
+Gravitomagnetic coupling hypothesis (unproven, requires validation)
+If unconfirmed: defaults to conventional ion propulsion (mass ejection required)
+Conservation of Momentum:
+Upheld in all cases
+Atmospheric: Momentum exchanged via aerodynamic interaction (chassis surfaces + air)
+Vacuum (if gravitomagnetic exists): Momentum exchange with gravitational field (hypothetical)
+Closed system with no external interaction: No net thrust (Newton's 3rd law)
 
 10.13. **Known Hypotheses Requiring Experimental Validation**
 1. Tesla valve anisotropy effect on pressure distribution in rotating channel — untested
