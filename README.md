@@ -29,18 +29,21 @@ After theoretical analysis and peer review, we concluded:
 ## 📦 What's in This Repository
 
 - `SPECIFICATION.md` — Full technical specification with calculations, tolerances, and control protocols (v1.8)
-- `BUILD_GUIDE_TIER0.md` — Step-by-step assembly guide (not recommended for construction)
-- `/cad` — Design files for components (Tesla valve inserts, disk layouts)
-- `/docs` — Research notes, peer feedback, and derivation attempts
+- `ORVACT_Tier0_BUILD_GUIDE.md` — Step-by-step assembly guide (not recommended for construction)
 
-## 💡 What Could Work Instead
+
+
+## 🔬 Physics Reality Check
 
 | Concept | Status | Notes |
 |---------|--------|-------|
-| CMG-based stabilization | ✅ Proven | Gyroscopes for attitude control (used on ISS) |
-| Atmospheric MHD propulsion | ⚠️ Partial | Requires ionized air / mass flow; not a closed system |
-| Ion/electric propulsion | ✅ Proven | Vacuum thrust via mass ejection; low thrust, high Isp |
-| Conventional rotors/propellers | ✅ Proven | Efficient, well-understood, scalable |
+| **CMG-based stabilization** | ✅ **Proven** | Gyroscopes for attitude control (used on ISS). Generate torque, not linear force. |
+| **CMG-based propulsion** | ❌ **Impossible** | Violates conservation of momentum in a closed system. No external thrust. |
+| **Atmospheric MHD propulsion** | ⚠️ **Feasible but Inefficient** | Requires air ionization or mass flow (not a closed system). Low thrust-to-power ratio. |
+| **Ion/electric propulsion** | ✅ **Proven** | Vacuum thrust via mass ejection (xenon, etc.). Low thrust, high specific impulse. |
+| **Conventional rotors/propellers** | ✅ **Proven** | Efficient, well-studied, scalable. Require atmosphere. |
+| **Flywheel energy storage** | ✅ **Proven** | Kinetic energy storage for stabilization and peak smoothing. |
+| **Flywheel for direct thrust** | ❌ **Impossible** | Closed system cannot produce linear thrust without external medium. |
 
 ## 🤝 Acknowledgements
 
