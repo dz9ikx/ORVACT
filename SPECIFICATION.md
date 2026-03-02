@@ -1,7 +1,37 @@
-# ORVACT Technical Specification v1.7
+# ORVACT Technical Specification v1.8
 
-## 1. System Overview
-ORVACT is a modular gyroscopic propulsion platform. It consists of two counter-rotating fluid rotors with Tesla valve channels, an axial electromagnetic stator, and a static structural shaft.
+## ⚠️ PROJECT STATUS: ARCHIVED
+
+**Conclusion:** Hypothesis not confirmed. Construction not recommended.
+
+This specification documents a theoretical propulsion concept that was found to be 
+physically unviable during peer review. It is preserved for educational purposes 
+and to prevent duplication of effort by other researchers.
+
+**Key Finding:** Closed gyroscopic systems cannot produce net linear thrust without 
+external momentum exchange (conservation of momentum).
+
+## 1. Executive Summary & Conclusion
+
+### 1.1 Original Goal
+Investigate whether counter-rotating fluid rotors with MHD interaction and 
+gyroscopic precession could generate measurable thrust in a closed system.
+
+### 1.2 Final Conclusion
+After theoretical analysis and peer review:
+- **Gyroscopes** produce torque, not linear force
+- **MHD in sealed channels** creates internal pressure only (∮ F·dθ = 0)
+- **Conservation of momentum** prohibits net thrust without external interaction
+- **Project archived** — no prototype construction recommended
+
+### 1.3 What Does Work
+| Application | Viable Approach |
+|-------------|-----------------|
+| Attitude control | CMG (Control Moment Gyroscopes) — proven on ISS |
+| Atmospheric thrust | Propellers, MHD with air ionization (mass flow required) |
+| Vacuum thrust | Ion engines, chemical rockets (mass ejection required) |
+| Energy storage | Flywheels (not for thrust) |
+
 
 ## 2. Physical Principles
 2.1. **Gyroscopic Precession**: Torque applied to the spin axis results in orthogonal motion (Euler's equations: τ = dL/dt = Ω × L).
